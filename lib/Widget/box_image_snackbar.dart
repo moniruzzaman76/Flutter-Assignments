@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 
-import '../utils.dart';
-
 class ImageBoxSnackBar extends StatelessWidget {
+  final String imageUrl;
   const ImageBoxSnackBar({
-    super.key,
+    super.key, required this.imageUrl,
   });
 
   @override
@@ -17,7 +16,7 @@ class ImageBoxSnackBar extends StatelessWidget {
             Container(
               height: 120,
               width: 120,
-              decoration: const BoxDecoration(
+              decoration:  BoxDecoration(
                   image: DecorationImage(
                       image: NetworkImage(imageUrl),
                       fit: BoxFit.fill
@@ -29,7 +28,7 @@ class ImageBoxSnackBar extends StatelessWidget {
                 alignment: Alignment.bottomCenter,
                 child: OutlinedButton(
                   style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.black26
+                      backgroundColor: Colors.black38
                   ),
                   onPressed: (){
                     ScaffoldMessenger.of(context).showSnackBar(

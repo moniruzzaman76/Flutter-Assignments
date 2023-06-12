@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ui_assignment_2/utils.dart';
 import 'Widget/box_image_snackbar.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -26,7 +27,6 @@ class _HomeScreenState extends State<HomeScreen> {
             padding: const EdgeInsets.all(12.0),
             child:Column(
               children: [
-
                 const SizedBox(height: 20,),
                 Container(
                   alignment: Alignment.center,
@@ -52,12 +52,13 @@ class _HomeScreenState extends State<HomeScreen> {
                   spacing: 8.0,
                   runSpacing: 8.0,
                   children: [
-                    ImageBoxSnackBar(),
-                    ImageBoxSnackBar(),
-                    ImageBoxSnackBar(),
-                    ImageBoxSnackBar(),
-                    ImageBoxSnackBar(),
-                    ImageBoxSnackBar(),
+                    ImageBoxSnackBar(imageUrl: imageUrl1,),
+                    ImageBoxSnackBar(imageUrl: imageUrl2,),
+                    ImageBoxSnackBar(imageUrl: imageUrl3,),
+                    ImageBoxSnackBar(imageUrl: imageUrl4,),
+                    ImageBoxSnackBar(imageUrl: imageUrl5,),
+                    ImageBoxSnackBar(imageUrl: imageUrl6,),
+
                   ],
                 ),
                 const SizedBox(height: 20,),
@@ -72,13 +73,13 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     ListTile(
                       leading: Icon(Icons.photo),
-                      title: Text("Sample Photo 1"),
-                      subtitle: Text("Category 1"),
+                      title: Text("Sample Photo 2"),
+                      subtitle: Text("Category 2"),
                     ),
                     ListTile(
                       leading: Icon(Icons.photo),
-                      title: Text("Sample Photo 1"),
-                      subtitle: Text("Category 1"),
+                      title: Text("Sample Photo 3"),
+                      subtitle: Text("Category 3"),
                     ),
                   ],
                 )
