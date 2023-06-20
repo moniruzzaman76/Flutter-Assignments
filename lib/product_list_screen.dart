@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ui_assignment_2/card_page_screen.dart';
 
+import 'card_button.dart';
+
 class ProductList extends StatefulWidget {
   const ProductList({super.key});
 
@@ -113,37 +115,4 @@ class Product {
   }
 }
 
-class CounterButton extends StatefulWidget {
-  final VoidCallback onPressed;
-  final int count;
 
-  const CounterButton(
-      {super.key, required this.onPressed, required this.count});
-
-  @override
-  State<CounterButton> createState() => _CounterButtonState();
-}
-
-class _CounterButtonState extends State<CounterButton> {
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Text(
-          widget.count.toString(),
-          style: const TextStyle(
-            fontSize: 18,
-          ),
-        ),
-        SizedBox(
-          height: 35,
-          child: ElevatedButton(
-            onPressed: widget.onPressed,
-            child: const Text("Buy Now"),
-          ),
-        ),
-      ],
-    );
-  }
-}
