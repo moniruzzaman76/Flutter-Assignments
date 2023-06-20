@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ui_assignment_2/card_page_screen.dart';
 
-import 'card_button.dart';
+import 'widget/card_button.dart';
 
 class ProductList extends StatefulWidget {
   const ProductList({super.key});
