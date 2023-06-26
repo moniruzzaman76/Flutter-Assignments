@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ui_assignment_2/card_page_screen.dart';
+import 'package:flutter_ui_assignment_2/product_model.dart';
 
 import 'widget/card_button.dart';
 
@@ -77,7 +78,8 @@ class _ProductListState extends State<ProductList> {
               trailing: CounterButton(
                 onPressed: () {
                   setState(() {
-                    products[index].incrementCounter();
+                    //products[index].incrementCounter();
+                    products[index].counter++;
                     if (products[index].counter == 5) {
                       _showCongratulationsDialog(products[index].name);
                     }
@@ -90,6 +92,7 @@ class _ProductListState extends State<ProductList> {
         },
       ),
       floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.green,
         onPressed: () {
           Navigator.push(
               context,
@@ -97,22 +100,12 @@ class _ProductListState extends State<ProductList> {
                   builder: (context) =>
                       CardPageScreen(totalProduct: getTotalBoughtProducts())));
         },
-        child: const Icon(Icons.shopping_cart),
+        child: const Icon(Icons.shopping_cart,),
       ),
     );
   }
 }
 
-class Product {
-  final String name;
-  final double price;
-  int counter;
 
-  Product({required this.name, required this.price, this.counter = 0});
-
-  void incrementCounter() {
-    counter++;
-  }
-}
 
 
