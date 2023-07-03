@@ -18,6 +18,8 @@ class _ProductListScreenState extends State<ProductListScreen> {
   TextEditingController descriptionEditingController = TextEditingController();
   TextEditingController deadLineEditingController = TextEditingController();
 
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
 
   @override
   Widget build(BuildContext context) {
@@ -66,31 +68,37 @@ class _ProductListScreenState extends State<ProductListScreen> {
                 content: SingleChildScrollView(
                   child: SizedBox(
                     height: 300,
-                    child: Column(
-                      children: [
-                        Expanded(
-                          flex: 1,
-                          child: CustomTextField(
-                            hinText: "Enter the title",
-                            controller: titleEditingController,
+                    child: Form(
+                      key: _formKey,
+                      child: Column(
+                        children: [
+                          Expanded(
+                            flex: 1,
+                            child: CustomTextField(
+                              hinText: "Enter the title",
+                              controller: titleEditingController,
+                              validatorText: "Please Enter your title",
+                            ),
                           ),
-                        ),
-                        Expanded(
-                          flex: 2,
-                          child: CustomTextField(
-                            hinText: "Enter the description",
-                            controller: descriptionEditingController,
-                            maxLine: 5,
+                          Expanded(
+                            flex: 2,
+                            child: CustomTextField(
+                              hinText: "Enter the description",
+                              controller: descriptionEditingController,
+                              validatorText: "Please Enter your description",
+                              maxLine: 5,
+                            ),
                           ),
-                        ),
-                        Expanded(
-                          flex: 1,
-                          child: CustomTextField(
-                            hinText: "Days Required",
-                            controller: deadLineEditingController,
+                          Expanded(
+                            flex: 1,
+                            child: CustomTextField(
+                              hinText: "Days Required",
+                              controller: deadLineEditingController,
+                              validatorText: "Please Enter your DeadLine",
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -106,17 +114,25 @@ class _ProductListScreenState extends State<ProductListScreen> {
                       const Spacer(),
                       TextButton(
                         onPressed: () {
-                          productList.add(
-                            Products(
-                              title: titleEditingController.text,
-                              description: descriptionEditingController.text,
-                              deadline: deadLineEditingController.text,
-                            ),
-                          );
-                          if (mounted) {
-                            setState(() {});
+                          if(_formKey.currentState!.validate()){
+                            productList.add(
+                              Products(
+                                title: titleEditingController.text,
+                                description: descriptionEditingController.text,
+                                deadline: deadLineEditingController.text,
+                              ),
+                            );
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                backgroundColor: Colors.green,
+                                  content: Text('Successfully Data Add')),
+                            );
+
+                            if (mounted) {
+                              setState(() {});
+                            }
+                            Navigator.pop(context);
                           }
-                          Navigator.pop(context);
                         },
                         child: const Text("Save"),
                       ),
